@@ -4,11 +4,11 @@ import CardItem from "../../components/card_item/index.jsx";
 
 const Home = () => {
   return (
-    <div>
+    <>
       <Navbar />
       <CardItem />
       <Footer />
-    </div>
+    </>
   );
 };
 
