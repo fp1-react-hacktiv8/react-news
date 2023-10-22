@@ -14,18 +14,27 @@ const Footer = () => {
         </div>
         <div>
           <span className="text-primary font-bold">Partner</span>
-          <a className="link link-hover" href="https://www.hacktiv8.com/">
+          <a
+            className="link link-hover"
+            href="https://www.hacktiv8.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
             Hacktiv8
           </a>
           <a
             className="link link-hover"
             href="https://kampusmerdeka.kemdikbud.go.id/"
+            target="_blank"
+            rel="noreferrer"
           >
             Kampus Merdeka
           </a>
           <a
             className="link link-hover"
             href="https://www.linkedin.com/in/arrizalrahmat/"
+            target="_blank"
+            rel="noreferrer"
           >
             Arrizal Rahmat
           </a>
@@ -35,6 +44,8 @@ const Footer = () => {
           <a
             className="link link-hover"
             href="https://github.com/fp1-react-hacktiv8/react-news"
+            target="_blank"
+            rel="noreferrer"
           >
             Fp-1 Team 04
           </a>

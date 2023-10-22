@@ -2,42 +2,69 @@ import {
   BsBookmark,
   //   BsBookmarkFill,
   BsHeart,
-  //   BsHeartFill,
+  BsHeartFill,
 } from "react-icons/bs";
+import { useState, useEffect } from "react";
 
 const CardItem = () => {
+  const [isLiked, setIsLiked] = useState(false);
+  const [newsData, setNewsData] = useState(null);
+
+  useEffect(() => {
+    // My_API_KEY
+    const apiKey = "72d7b24f8533430b8006a180df82e52d";
+
+    fetch(`https://newsapi.org/v2/everything?q=programming&apiKey=${apiKey}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.articles.length > 0) {
+          // hanya mengambil 1 berita pertama tentang "Programming" *hanya untuk test API nya, sementara
+          setNewsData(data.articles[0]);
+        }
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
+  // mengubah format tanggal ke Indonesia(id)
+  function formatDateIndonesian(dateString) {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(dateString).toLocaleDateString("id-ID", options);
+  }
+
+  function handleLike() {
+    setIsLiked(!isLiked);
+  }
+
   return (
     <article className="cardItem">
-      <div className="card w-96 glass">
-        <a href="">
-          <img
-            className="border rounded-2xl border-black mb-1 h-48 w-full "
-            src="src/assets/foto/sb.jpeg"
-            alt="foto"
-          />
-          <p className="text-sm pl-2 opacity-60">
-            <b>
-              <span>News author</span> • <span>publishedAt</span>
-            </b>
-          </p>
-          <div className="flex-col px-2 w-[fit-content]">
-            <h3 className="text-2xl leading-7">
-              <strong>News title</strong>
-            </h3>
-            <p className="text-sm mt-2 mb-2">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. At
-              reiciendis earum laborum nisi quas architecto adipisci cupiditate
-              aspernatur officia nostrum, iure tempore quisquam obcaecati
-              recusandae excepturi laudantium eaque error? Molestiae?
+      {newsData && (
+        <div className="card w-96 glass">
+          <a href={newsData.url} target="_blank" rel="noreferrer">
+            <img
+              className="border rounded-2xl border-black mb-1 h-48 w-full"
+              src={newsData.urlToImage}
+              alt="foto"
+            />
+            <p className="text-sm pl-2 opacity-60">
+              <b>
+                <span>{newsData.author}</span> •{" "}
+                <span>{formatDateIndonesian(newsData.publishedAt)}</span>
+              </b>
             </p>
-          </div>
-        </a>
-      </div>
+            <div className="flex-col px-2 w-[fit-content]">
+              <h3 className="text-2xl leading-7">
+                <strong>{newsData.title}</strong>
+              </h3>
+              <p className="text-sm mt-2 mb-2">{newsData.description}</p>
+            </div>
+          </a>
+        </div>
+      )}
       <footer className="align-bottom bottom-4">
         <hr />
         <div className="flex flex-row justify-between">
-          <button>
-            <BsHeart size={25} />
+          <button onClick={handleLike}>
+            {isLiked ? <BsHeartFill size={25} /> : <BsHeart size={25} />}
           </button>
           <button>
             <BsBookmark size={25} />
@@ -49,3 +76,56 @@ const CardItem = () => {
 };
 
 export default CardItem;
+
+// Code sblmnya
+// import {
+//   BsBookmark,
+//   //   BsBookmarkFill,
+//   BsHeart,
+//   //   BsHeartFill,
+// } from "react-icons/bs";
+
+// const CardItem = () => {
+//   return (
+//     <article className="cardItem">
+//       <div className="card w-96 glass">
+//         <a href="">
+//           <img
+//             className="border rounded-2xl border-black mb-1 h-48 w-full "
+//             src="src/assets/foto/sb.jpeg"
+//             alt="foto"
+//           />
+//           <p className="text-sm pl-2 opacity-60">
+//             <b>
+//               <span>News author</span> • <span>publishedAt</span>
+//             </b>
+//           </p>
+//           <div className="flex-col px-2 w-[fit-content]">
+//             <h3 className="text-2xl leading-7">
+//               <strong>News title</strong>
+//             </h3>
+//             <p className="text-sm mt-2 mb-2">
+//               Lorem, ipsum dolor sit amet consectetur adipisicing elit. At
+//               reiciendis earum laborum nisi quas architecto adipisci cupiditate
+//               aspernatur officia nostrum, iure tempore quisquam obcaecati
+//               recusandae excepturi laudantium eaque error? Molestiae?
+//             </p>
+//           </div>
+//         </a>
+//       </div>
+//       <footer className="align-bottom bottom-4">
+//         <hr />
+//         <div className="flex flex-row justify-between">
+//           <button>
+//             <BsHeart size={25} />
+//           </button>
+//           <button>
+//             <BsBookmark size={25} />
+//           </button>
+//         </div>
+//       </footer>
+//     </article>
+//   );
+// };
+
+// export default CardItem;
