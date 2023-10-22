@@ -5,27 +5,30 @@ import {
   BsHeartFill,
 } from "react-icons/bs";
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 const CardItem = () => {
   const [isLiked, setIsLiked] = useState(false);
   const [newsData, setNewsData] = useState(null);
 
-  useEffect(() => {
-    // My_API_KEY
-    const apiKey = "72d7b24f8533430b8006a180df82e52d";
+  const indonesiaNews = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/top-headlines?country=id&apiKey=${
+          import.meta.env.VITE_API_KEY
+        }`
+      );
+      console.log(response.data);
+      setNewsData(response.data.articles[0]);
+    } catch (error) {
+      (error) => console.error(error);
+    }
+  };
 
-    fetch(`https://newsapi.org/v2/everything?q=programming&apiKey=${apiKey}`)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.articles.length > 0) {
-          // hanya mengambil 1 berita pertama tentang "Programming" *hanya untuk test API nya, sementara
-          setNewsData(data.articles[0]);
-        }
-      })
-      .catch((error) => console.error(error));
+  useEffect(() => {
+    indonesiaNews();
   }, []);
 
-  // mengubah format tanggal ke Indonesia(id)
   function formatDateIndonesian(dateString) {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(dateString).toLocaleDateString("id-ID", options);
