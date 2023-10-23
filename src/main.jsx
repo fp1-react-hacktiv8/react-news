@@ -2,12 +2,40 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./css/index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Home from "./pages/home/index.jsx";
+import Indonesia from "./pages/indonesia/index.jsx";
+import Covid from "./pages/covid";
+import Programming from "./pages/programming";
+import Search from "./pages/search";
+import Saved from "./pages/saved";
 
 export const Router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <Indonesia />,
+  },
+  {
+    path: "/covid",
+    element: <Covid />,
+  },
+  {
+    path: "/programming",
+    element: <Programming />,
+  },
+  {
+    path: "/search",
+    element: <Search />,
+  },
+  {
+    path: "/saved",
+    element: <Saved />,
+  },
+  {
+    path: "*",
+    element: (
+      <div className="flex justify-center items-center h-screen text-3xl">
+        Not Found 404
+      </div>
+    ),
   },
 ]);
 
