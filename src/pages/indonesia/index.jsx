@@ -1,12 +1,15 @@
-import Navbar from "../../components/navbar/index.jsx";
-import Footer from "../../components/footer/index.jsx";
-import CardItem from "../../components/card_item/index.jsx";
+import MainContent from "@components/MainContent";
+import Footer from "@components/footer";
+import Navbar from "@components/navbar";
 
 const Indonesia = () => {
   return (
     <>
       <Navbar />
-      <CardItem />
+      <MainContent
+        endpoint="top-headlines?country=id&pageSize=8"
+        category={"Indonesia"}
+      />
       <Footer />
     </>
   );
