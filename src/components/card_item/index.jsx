@@ -6,6 +6,7 @@ import {
 } from "react-icons/bs";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import LazyLoad from "react-lazy-load";
 
 const CardItem = () => {
   const [isLiked, setIsLiked] = useState(false);
@@ -43,11 +44,13 @@ const CardItem = () => {
       {newsData && (
         <div className="card w-96 glass">
           <a href={newsData.url} target="_blank" rel="noreferrer">
-            <img
-              className="border rounded-2xl border-black mb-1 h-48 w-full"
-              src={newsData.urlToImage}
-              alt="foto"
-            />
+            <LazyLoad>
+              <img
+                className="border rounded-2xl border-black mb-1 h-48 w-full"
+                src={newsData.urlToImage}
+                alt="foto berita"
+              />
+            </LazyLoad>
             <p className="text-sm pl-2 opacity-60">
               <b>
                 <span>{newsData.author}</span> •{" "}
