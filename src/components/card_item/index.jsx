@@ -4,32 +4,12 @@ import {
   BsHeart,
   BsHeartFill,
 } from "react-icons/bs";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import LazyLoad from "react-lazy-load";
+import { useState } from "react";
+import PropTypes from "prop-types";
 
-const CardItem = () => {
+const CardItem = ({ news }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
-  const [newsData, setNewsData] = useState(null);
-
-  const indonesiaNews = async () => {
-    try {
-      const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/top-headlines?country=id&apiKey=${
-          import.meta.env.VITE_API_KEY
-        }`
-      );
-      console.log(response.data);
-      setNewsData(response.data.articles[0]);
-    } catch (error) {
-      (error) => console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    indonesiaNews();
-  }, []);
 
   function formatDateIndonesian(dateString) {
     const options = { year: "numeric", month: "long", day: "numeric" };
@@ -45,33 +25,30 @@ const CardItem = () => {
   }
 
   return (
-    <article className="cardItem">
-      {newsData && (
-        <div className="card w-96 glass">
-          <a href={newsData.url} target="_blank" rel="noreferrer">
-            <LazyLoad>
-              <img
-                className="border rounded-2xl border-black mb-1 h-48 w-full"
-                src={newsData.urlToImage}
-                // alt="foto berita"
-                alt={newsData.title}
-              />
-            </LazyLoad>
+    <article className="p-3 h-[480px] w-80 rounded-lg shadow shadow-black mb-20">
+      <div className="card glass h-full flex flex-col justify-between">
+        {news && (
+          <a href={news?.url} target="_blank" rel="noreferrer">
+            <img
+              className="border rounded-2xl border-black mb-1 h-48 w-full"
+              src={news?.urlToImage}
+              alt={news?.title}
+            />
             <p className="text-sm pl-2 opacity-60">
               <b>
-                <span>{newsData.author}</span> •{" "}
-                <span>{formatDateIndonesian(newsData.publishedAt)}</span>
+                <span>{news?.author}</span> •{" "}
+                <span>{formatDateIndonesian(news?.publishedAt)}</span>
               </b>
             </p>
-            <div className="flex-col px-2 w-[fit-content]">
+            <div className="flex-col px-2 w-[fit-content] flex-grow">
               <h3 className="text-2xl leading-7">
-                <strong>{newsData.title}</strong>
+                <strong>{news?.title}</strong>
               </h3>
-              <p className="text-sm mt-2 mb-2">{newsData.description}</p>
+              <p className="text-sm mt-2 mb-2">{news?.description}</p>
             </div>
           </a>
-        </div>
-      )}
+        )}
+      </div>
       <footer className="align-bottom bottom-4">
         <hr />
         <div className="flex flex-row justify-between">
@@ -89,6 +66,10 @@ const CardItem = () => {
       </footer>
     </article>
   );
+};
+
+CardItem.propTypes = {
+  news: PropTypes.object.isRequired,
 };
 
 export default CardItem;

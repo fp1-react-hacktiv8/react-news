@@ -2,11 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./css/index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Indonesia from "./pages/indonesia/index.jsx";
-import Covid from "./pages/covid";
-import Programming from "./pages/programming";
-import Search from "./pages/search";
-import Saved from "./pages/saved";
+import Indonesia from "@pages/indonesia";
+import Covid from "@pages/covid";
+import Programming from "@pages/programming";
+import Search from "@pages/search";
+import Saved from "@pages/saved";
 
 export const Router = createBrowserRouter([
   {
@@ -22,7 +22,7 @@ export const Router = createBrowserRouter([
     element: <Programming />,
   },
   {
-    path: "/search",
+    path: "/search/*",
     element: <Search />,
   },
   {

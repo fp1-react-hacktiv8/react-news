@@ -1,6 +1,6 @@
-import CardItem from "../../components/card_item";
-import Footer from "../../components/footer";
-import Navbar from "../../components/navbar";
+import CardItem from "@components/card_item";
+import Footer from "@components/footer";
+import Navbar from "@components/navbar";
 
 const Saved = () => {
   return (
