@@ -1,12 +1,13 @@
-import CardItem from "@components/card_item";
+import MainContent from "@components/MainContent";
 import Footer from "@components/footer";
 import Navbar from "@components/navbar";
+import endpoints from "@libs/index";
 
 const Covid = () => {
   return (
     <>
       <Navbar />
-      <CardItem />
+      <MainContent endpoint={endpoints.covid19} category={"Covid"} />
       <Footer />
     </>
   );

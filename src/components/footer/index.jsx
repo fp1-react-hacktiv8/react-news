@@ -5,9 +5,11 @@ const Footer = () => {
     <>
       <footer className="footer-content">
         <div>
-          <a href="" to="/" className="flex-1">
+          <a href="/" to="/" className="flex-1">
             <p className="text-4xl text-primary mb-5">
-              <b>ForNews</b>
+              <b>
+                For<span className="text-orange-500">News</span>
+              </b>
             </p>
           </a>
           <p>Menyulap Berita Menjadi Pengetahuan</p>
@@ -71,7 +73,9 @@ const Footer = () => {
             <label className="modal-box w-11/12 max-w-6xl relative">
               <center>
                 <b>
-                  <h1 className="text-2xl font-bold">ForNews Team 04</h1>
+                  <h1 className="text-2xl font-bold">
+                    For<span className="text-orange-500">News</span> Team 04
+                  </h1>
                 </b>
               </center>
 
