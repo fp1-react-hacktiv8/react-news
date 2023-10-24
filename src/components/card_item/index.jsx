@@ -25,8 +25,8 @@ const CardItem = ({ news }) => {
   }
 
   return (
-    <article className="p-3 h-[480px] w-80 rounded-lg shadow shadow-black mb-20">
-      <div className="card glass h-full flex flex-col justify-between">
+    <article className="cardItem">
+      <div className="card w-96 glass w-fit h-[410px]">
         {news && (
           <a href={news?.url} target="_blank" rel="noreferrer">
             <img

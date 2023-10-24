@@ -12,9 +12,11 @@ const Navbar = () => {
     <>
       <div className="navbar">
         <div className="flex">
-          <a href="">
-            <p className="text-3xl text-primary">
-              <b>ForNews</b>
+          <a href="/">
+            <p className="text-4xl text-primary">
+              <b>
+                For<span className="text-orange-500">News</span>
+              </b>
             </p>
           </a>
         </div>
