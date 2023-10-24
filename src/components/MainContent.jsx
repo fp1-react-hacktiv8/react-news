@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import CardItem from "./card_item";
 import { LoadingCard } from ".";
 import PropTypes from "prop-types";
+import TabMenu from "./TabMenu";
 
 const MainContent = ({ endpoint, category }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -29,6 +30,7 @@ const MainContent = ({ endpoint, category }) => {
 
   return (
     <main className="flex flex-col gap-x-5 items-center justify-center w-full mb-20">
+      <TabMenu />
       <section className="mt-[10vh] w-full flex flex-col justify-center items-center mb-5">
         <h1 className=" capitalize text-4xl dark:text-white">
           {category} News

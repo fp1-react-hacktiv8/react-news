@@ -1,15 +1,13 @@
 import MainContent from "@components/MainContent";
 import Footer from "@components/footer";
 import Navbar from "@components/navbar";
+import endpoints from "@libs/index";
 
 const Indonesia = () => {
   return (
     <>
       <Navbar />
-      <MainContent
-        endpoint="top-headlines?country=id&pageSize=8"
-        category={"Indonesia"}
-      />
+      <MainContent endpoint={endpoints.indonesia} category={"Indonesia"} />
       <Footer />
     </>
   );
