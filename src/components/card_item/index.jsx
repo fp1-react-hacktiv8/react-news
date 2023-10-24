@@ -48,7 +48,8 @@ const CardItem = () => {
               <img
                 className="border rounded-2xl border-black mb-1 h-48 w-full"
                 src={newsData.urlToImage}
-                alt="foto berita"
+                // alt="foto berita"
+                alt={newsData.title}
               />
             </LazyLoad>
             <p className="text-sm pl-2 opacity-60">
