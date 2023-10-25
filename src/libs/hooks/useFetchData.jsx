@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 const useFetchData = (endpoint) => {
   const [isLoading, setIsLoading] = useState(true);
   const [news, setNews] = useState([]);
+  const [maxPages, setMaxPages] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,6 +16,7 @@ const useFetchData = (endpoint) => {
         );
         setIsLoading(false);
         setNews(response.data.articles);
+        setMaxPages(response.data.totalResults);
       } catch (error) {
         setIsLoading(false);
         console.error(error);
@@ -24,7 +26,7 @@ const useFetchData = (endpoint) => {
     fetchData();
   }, [endpoint]);
 
-  return { news, isLoading };
+  return { news, isLoading, maxPages };
 };
 
 export default useFetchData;
