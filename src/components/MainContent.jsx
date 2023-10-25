@@ -29,7 +29,7 @@ const MainContent = ({ endpoint, category }) => {
   }, [endpoint]);
 
   return (
-    <main className="flex flex-col gap-x-5 items-center justify-center w-full mb-20">
+    <main className="flex flex-col gap-x-2 items-center justify-center w-full mb-20 mx-4">
       <TabMenu />
       <section className="mt-[5vh] w-full flex flex-col justify-center items-center">
         <h1 className=" capitalize text-4xl dark:text-white">
@@ -38,7 +38,7 @@ const MainContent = ({ endpoint, category }) => {
         <div className="border-b-2 border-slate-900 dark:border-white w-[70%] m-[1rem]" />
       </section>
       {isLoading && <LoadingCard />}
-      <div className="main-content">
+      <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 my-5">
         {news?.map((newsItem, index) => (
           <div key={index}>
             <CardItem news={newsItem} />

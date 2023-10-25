@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 const CardItem = ({ news }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
-
+  console.log(news);
   function formatDateIndonesian(dateString) {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(dateString).toLocaleDateString("id-ID", options);
@@ -26,29 +26,34 @@ const CardItem = ({ news }) => {
 
   return (
     <article className="cardItem">
-      <div className="card w-96 glass w-fit h-[410px]">
-        {news && (
-          <a href={news?.url} target="_blank" rel="noreferrer">
+      {news && (
+        <div className="card w-96 bg-base-100 shadow-xl">
+          <figure>
             <img
-              className="border rounded-2xl border-black mb-1 h-48 w-full"
-              src={news?.urlToImage}
+              src={
+                news?.urlToImage
+                  ? news?.urlToImage
+                  : "https://placehold.co/400x220"
+              }
               alt={news?.title}
+              className="w-full h-40 object-cover"
             />
+          </figure>
+          <div className="mt-2">
             <p className="text-sm pl-2 opacity-60">
               <b>
-                <span>{news?.author}</span> •{" "}
+                <span>{news?.author ? news?.author : "Anonymous"}</span> •{" "}
                 <span>{formatDateIndonesian(news?.publishedAt)}</span>
               </b>
             </p>
-            <div className="flex-col px-2 w-[fit-content] flex-grow">
-              <h3 className="text-2xl leading-7">
-                <strong>{news?.title}</strong>
-              </h3>
-              <p className="text-sm mt-2 mb-2">{news?.description}</p>
-            </div>
-          </a>
-        )}
-      </div>
+          </div>
+          <div className="card-body h-80 overflow-hidden">
+            <h2 className="card-title">{news?.title}</h2>
+            <p>{news?.description}</p>
+          </div>
+        </div>
+      )}
+
       <footer className="align-bottom bottom-4">
         <hr />
         <div className="flex flex-row justify-between">
