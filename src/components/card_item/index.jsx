@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 const CardItem = ({ news }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
-  console.log(news);
+
   function formatDateIndonesian(dateString) {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(dateString).toLocaleDateString("id-ID", options);
@@ -27,7 +27,7 @@ const CardItem = ({ news }) => {
   return (
     <article className="cardItem">
       {news && (
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card w-96 bg-base-100">
           <figure>
             <img
               src={
