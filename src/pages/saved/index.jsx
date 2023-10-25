@@ -1,15 +1,15 @@
 import MainContent from "@components/MainContent";
 import Footer from "@components/footer";
 import Navbar from "@components/navbar";
-import endpoints from "@libs/api";
-import useFetchData from "@libs/hooks/useFetchData";
+import { useSelector } from "react-redux";
 
 const Saved = () => {
-  const { data, isLoading } = useFetchData(`${endpoints.indonesia}`);
+  const { news } = useSelector((state) => state);
+
   return (
     <>
       <Navbar />
-      <MainContent news={data} isLoading={isLoading} category={"Programming"} />
+      <MainContent news={news.data} category={"Saved"} />
       <Footer />
     </>
   );

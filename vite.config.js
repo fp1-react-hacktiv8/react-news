@@ -8,6 +8,7 @@ export default defineConfig({
       '@components': `/src/components`,
       '@pages': `/src/pages`,
       '@libs': `/src/libs`,
+      '@redux': `/src/redux`,
     }
   }
 })

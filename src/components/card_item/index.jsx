@@ -6,10 +6,18 @@ import {
 } from "react-icons/bs";
 import { useState } from "react";
 import PropTypes from "prop-types";
+import { useDispatch, useSelector } from "react-redux";
+import { addToSaved } from "@redux/slice";
 
 const CardItem = ({ news }) => {
   const [isLiked, setIsLiked] = useState(false);
-  const [isBookmarked, setIsBookmarked] = useState(false);
+
+  const dispatch = useDispatch();
+  const savedNews = useSelector((state) => state);
+
+  const isNewsSaved = (news) => {
+    return savedNews.news.data.some((item) => item.title === news.title);
+  };
 
   function formatDateIndonesian(dateString) {
     const options = { year: "numeric", month: "long", day: "numeric" };
@@ -21,7 +29,7 @@ const CardItem = ({ news }) => {
   }
 
   function handleBookmark() {
-    setIsBookmarked(!isBookmarked);
+    dispatch(addToSaved(news));
   }
 
   return (
@@ -61,7 +69,7 @@ const CardItem = ({ news }) => {
             {isLiked ? <BsHeartFill size={25} /> : <BsHeart size={25} />}
           </button>
           <button onClick={handleBookmark}>
-            {isBookmarked ? (
+            {isNewsSaved(news) ? (
               <BsBookmarkFill size={25} />
             ) : (
               <BsBookmark size={25} />

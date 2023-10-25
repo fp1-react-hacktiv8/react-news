@@ -26,9 +26,9 @@ const MainContent = ({ news, isLoading, category }) => {
 };
 
 MainContent.propTypes = {
-  news: PropTypes.object.isRequired,
+  news: PropTypes.array.isRequired,
   category: PropTypes.string.isRequired,
-  isLoading: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool,
 };
 
 export default MainContent;

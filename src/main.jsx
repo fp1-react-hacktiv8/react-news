@@ -7,6 +7,8 @@ import Covid from "@pages/covid";
 import Programming from "@pages/programming";
 import Search from "@pages/search";
 import Saved from "@pages/saved";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 export const Router = createBrowserRouter([
   {
@@ -41,6 +43,8 @@ export const Router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={Router} />
+    <Provider store={store}>
+      <RouterProvider router={Router} />
+    </Provider>
   </React.StrictMode>
 );
