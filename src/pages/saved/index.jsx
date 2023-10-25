@@ -4,7 +4,7 @@ import Navbar from "@components/navbar";
 import { useSelector } from "react-redux";
 
 const Saved = () => {
-  const { news } = useSelector((state) => state);
+  const news = useSelector((state) => state.news);
 
   return (
     <>

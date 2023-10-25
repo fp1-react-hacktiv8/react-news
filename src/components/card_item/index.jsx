@@ -13,10 +13,10 @@ const CardItem = ({ news }) => {
   const [isLiked, setIsLiked] = useState(false);
 
   const dispatch = useDispatch();
-  const savedNews = useSelector((state) => state);
+  const savedNews = useSelector((state) => state.news);
 
   const isNewsSaved = (news) => {
-    return savedNews.news.data.some((item) => item.title === news.title);
+    return savedNews.data.some((item) => item.title === news.title);
   };
 
   function formatDateIndonesian(dateString) {
