@@ -60,7 +60,7 @@ hr {
 }
 
 .cardItem {
-  @apply grid pt-4 pb-2 px-4 content-between bg-transparent rounded-md border border-primary w-fit h-auto;
+  @apply grid pt-4 pb-2 px-4 content-between bg-transparent rounded-md border border-primary;
 }
 
 article {
