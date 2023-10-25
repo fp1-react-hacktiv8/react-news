@@ -1,33 +1,9 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import CardItem from "./card_item";
 import { LoadingCard } from ".";
 import PropTypes from "prop-types";
 import TabMenu from "./TabMenu";
 
-const MainContent = ({ endpoint, category }) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [news, setNews] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/${endpoint}&apiKey=${
-            import.meta.env.VITE_API_KEY
-          }`
-        );
-        setIsLoading(false);
-        setNews(response.data.articles);
-      } catch (error) {
-        setIsLoading(false);
-        console.error(error);
-      }
-    };
-
-    fetchData();
-  }, [endpoint]);
-
+const MainContent = ({ news, isLoading, category }) => {
   return (
     <main className="flex flex-col gap-x-2 items-center justify-center w-full mb-20 mx-4">
       <TabMenu />
@@ -50,8 +26,9 @@ const MainContent = ({ endpoint, category }) => {
 };
 
 MainContent.propTypes = {
-  endpoint: PropTypes.string.isRequired,
+  news: PropTypes.object.isRequired,
   category: PropTypes.string.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 export default MainContent;
