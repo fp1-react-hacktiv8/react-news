@@ -20,10 +20,8 @@ const MainContent = ({ endpoint, category }) => {
     <main className="flex flex-col gap-x-2 items-center justify-center w-full mb-10 mx-4">
       <TabMenu />
       <section className="mt-[5vh] w-full flex flex-col justify-center items-center">
-        <h1 className=" capitalize text-4xl dark:text-white">
-          {category} News
-        </h1>
-        <div className="border-b-2 border-slate-900 dark:border-white w-[70%] m-[1rem]" />
+        <h1 className=" capitalize text-4xl">{category} News</h1>
+        <hr className="border-b w-[70%] m-[1rem]" />
       </section>
       {isLoading && <LoadingCard />}
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 my-5">
