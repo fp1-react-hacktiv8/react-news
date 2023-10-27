@@ -1,17 +1,9 @@
-import {
-  BsBookmark,
-  BsBookmarkFill,
-  BsHeart,
-  BsHeartFill,
-} from "react-icons/bs";
-import { useState } from "react";
+import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { addToSaved } from "@redux/slice";
 
 const CardItem = ({ news }) => {
-  const [isLiked, setIsLiked] = useState(false);
-
   const dispatch = useDispatch();
   const savedNews = useSelector((state) => state.news);
 
@@ -22,10 +14,6 @@ const CardItem = ({ news }) => {
   function formatDateIndonesian(dateString) {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(dateString).toLocaleDateString("id-ID", options);
-  }
-
-  function handleLike() {
-    setIsLiked(!isLiked);
   }
 
   function handleBookmark() {
@@ -65,9 +53,9 @@ const CardItem = ({ news }) => {
       <footer className="align-bottom bottom-4">
         <hr />
         <div className="flex flex-row justify-between">
-          <button onClick={handleLike}>
-            {isLiked ? <BsHeartFill size={25} /> : <BsHeart size={25} />}
-          </button>
+          <a href={news?.url} target="_blank" rel="noreferrer">
+            <button className="btn mt-1">News Page</button>
+          </a>
           <button onClick={handleBookmark}>
             {isNewsSaved(news) ? (
               <BsBookmarkFill size={25} />

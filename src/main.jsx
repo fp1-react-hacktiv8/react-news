@@ -24,7 +24,7 @@ export const Router = createBrowserRouter([
     element: <Programming />,
   },
   {
-    path: "/search/*",
+    path: "/search/:search",
     element: <Search />,
   },
   {

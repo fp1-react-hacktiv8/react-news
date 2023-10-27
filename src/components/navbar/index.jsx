@@ -1,10 +1,23 @@
 import { BsBookmarksFill } from "react-icons/bs";
 import { IoSearchOutline } from "react-icons/io5";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { themeChange } from "theme-change";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const [search, setSearch] = useState("");
+
+  const navigate = useNavigate();
+  const handleKeyPressed = (e) => {
+    if (e.key === "Enter") {
+      navigate(`/search/${search}`);
+    }
+  };
+
+  const searchButton = () => {
+    navigate(`/search/${search}`);
+  };
+
   useEffect(() => {
     themeChange(false);
   }, []);
@@ -27,10 +40,15 @@ const Navbar = () => {
               type="text"
               placeholder="Search news..."
               className="input input-bordered w-24 h-10 md:w-auto rounded-full border-primary"
+              onChange={(e) => setSearch(e.target.value)}
+              onKeyDown={(e) => {
+                handleKeyPressed(e);
+              }}
             />
             <button
               type="submit"
               className="h-10 absolute rounded-full self-end hover:bg-primary hover:text-base-100 border-none"
+              onClick={searchButton}
             >
               <IoSearchOutline size={20} />
             </button>
@@ -57,30 +75,6 @@ const Navbar = () => {
           <NavLink to="/saved">
             <BsBookmarksFill size={20} />{" "}
           </NavLink>
-          <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                <img src="https://api.lorem.space/image/face?hash=33791" />
-              </div>
-            </label>
-            <ul
-              tabIndex={0}
-              className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </a>
-              </li>
-              <li>
-                <a>Settings</a>
-              </li>
-              <li>
-                <a>Logout</a>
-              </li>
-            </ul>
-          </div>
         </div>
       </div>
     </>
