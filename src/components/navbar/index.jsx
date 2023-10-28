@@ -18,8 +18,24 @@ const Navbar = () => {
     navigate(`/search/${search}`);
   };
 
+  const toggleTheme = () => {
+    const currentTheme = localStorage.getItem("theme");
+    const newTheme = currentTheme === "dark" ? "dark" : "light";
+    console.log(newTheme);
+
+    // Ganti tema
+    themeChange(newTheme);
+
+    // Simpan preferensi tema ke localStorage
+    localStorage.setItem("theme", newTheme);
+  };
+
   useEffect(() => {
-    themeChange(false);
+    // Set tema awal berdasarkan nilai di localStorage saat komponen dimuat
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      themeChange(currentTheme);
+    }
   }, []);
 
   return (
@@ -54,7 +70,12 @@ const Navbar = () => {
             </button>
           </div>
           <label className="swap swap-rotate ml-6">
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              onClick={(e) => {
+                toggleTheme(e);
+              }}
+            />
             <svg
               className="swap-on fill-current w-7 "
               data-set-theme="light"
