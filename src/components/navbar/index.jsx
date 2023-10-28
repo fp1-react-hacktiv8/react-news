@@ -21,17 +21,13 @@ const Navbar = () => {
   const toggleTheme = () => {
     const currentTheme = localStorage.getItem("theme");
     const newTheme = currentTheme === "dark" ? "dark" : "light";
-    console.log(newTheme);
 
-    // Ganti tema
     themeChange(newTheme);
 
-    // Simpan preferensi tema ke localStorage
     localStorage.setItem("theme", newTheme);
   };
 
   useEffect(() => {
-    // Set tema awal berdasarkan nilai di localStorage saat komponen dimuat
     const currentTheme = localStorage.getItem("theme");
     if (currentTheme) {
       themeChange(currentTheme);
