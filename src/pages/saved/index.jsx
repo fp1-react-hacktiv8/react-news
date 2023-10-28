@@ -5,7 +5,8 @@ import Navbar from "@components/navbar";
 import { useSelector } from "react-redux";
 
 const Saved = () => {
-  const news = useSelector((state) => state.news);
+  const newsData = useSelector((state) => state.news);
+  const news = [...newsData.data].reverse();
 
   return (
     <>
@@ -17,12 +18,11 @@ const Saved = () => {
           <hr className="border-b w-[70%] m-[1rem]" />
         </section>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 my-5">
-          {news.data.length > 0 &&
-            news.data?.map((newsItem, index) => (
-              <div key={index}>
-                <CardItem news={newsItem} />
-              </div>
-            ))}
+          {news.map((newsItem, index) => (
+            <div key={index}>
+              <CardItem news={newsItem} />
+            </div>
+          ))}
         </div>
       </main>
       <Footer />
