@@ -4,3 +4,4 @@ export * from "./navbar";
 export * from "./MainContent";
 export * from "./LoadingCard"
 export * from "./Pagination";
+export * from "./Table"
