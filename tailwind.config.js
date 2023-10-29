@@ -1,4 +1,4 @@
-import daisyui from 'daisyui';
+import daisyui from "daisyui";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -16,7 +16,7 @@ export default {
         light: {
           primary: "#1f1f1f",
           "primary-content": "#ffffff",
-          "base-100": "#ffffff",
+          "base-100": "#e0e0e0",
         },
       },
       {
