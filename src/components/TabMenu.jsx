@@ -16,6 +16,12 @@ const TabMenu = () => {
       <NavLink className={isActive} to="/covid">
         Covid
       </NavLink>
+      <NavLink className={isActive} to="/sports">
+        Sports
+      </NavLink>
+      <NavLink className={isActive} to="/politics">
+        Politics
+      </NavLink>
     </div>
   );
 };
