@@ -5,11 +5,11 @@ import endpoints from "@libs/api";
 
 const Programming = () => {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Navbar />
       <MainContent endpoint={endpoints.programing} category={"Programming"} />
       <Footer />
-    </>
+    </div>
   );
 };
 

@@ -8,14 +8,14 @@ const Search = () => {
   const { search } = useParams();
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Navbar />
       <MainContent
         endpoint={`${endpoints.search}${search}`}
         category={search[0].toUpperCase() + search.slice(1)}
       />
       <Footer />
-    </>
+    </div>
   );
 };
 
