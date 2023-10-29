@@ -14,7 +14,7 @@ const Table = ({ news }) => {
   };
 
   return (
-    <div className="w-full px-32">
+    <div className="w-full overflow-x-auto">
       <table className="table table-zebra w-full">
         <thead className="text-xl text-black">
           <tr>
