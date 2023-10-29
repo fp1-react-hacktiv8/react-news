@@ -44,7 +44,7 @@ const CardItem = ({ news }) => {
             </p>
           </div>
           <div className="card-body h-80 overflow-hidden flex-1">
-            <h2 className="card-title">{news?.title}</h2>
+            <h2 className="card-title text-primary">{news?.title}</h2>
             <p>{news?.description}</p>
           </div>
         </div>
