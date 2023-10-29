@@ -16,7 +16,8 @@ export default {
         light: {
           primary: "#1f1f1f",
           "primary-content": "#ffffff",
-          "base-100": "#e0e0e0",
+          // "base-100": "#e0e0e0",
+          "base-100": "#f9f9f9",
         },
       },
       {

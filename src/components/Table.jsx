@@ -16,7 +16,7 @@ const Table = ({ news }) => {
   return (
     <div className="w-full overflow-x-auto px-10">
       <table className="table table-zebra w-full">
-        <thead className="text-xl text-black">
+        <thead className="text-xl text-primary">
           <tr>
             <th>Source</th>
             <th>Title</th>
