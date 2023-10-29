@@ -1,0 +1,16 @@
+import MainContent from "@components/MainContent";
+import Footer from "@components/Footer";
+import Navbar from "@components/Navbar";
+import endpoints from "@libs/api";
+
+const Sports = () => {
+  return (
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
+      <MainContent endpoint={endpoints.sports} category={"Sports"} />
+      <Footer />
+    </div>
+  );
+};
+
+export default Sports;

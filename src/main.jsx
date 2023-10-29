@@ -5,6 +5,8 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Indonesia from "@pages/indonesia";
 import Covid from "@pages/covid";
 import Programming from "@pages/programming";
+import Sports from "@pages/sports";
+import Politics from "@pages/politics";
 import Search from "@pages/search";
 import Saved from "@pages/saved";
 import { Provider } from "react-redux";
@@ -22,6 +24,14 @@ export const Router = createBrowserRouter([
   {
     path: "/programming",
     element: <Programming />,
+  },
+  {
+    path: "/sports",
+    element: <Sports />,
+  },
+  {
+    path: "/politics",
+    element: <Politics />,
   },
   {
     path: "/search/:search",

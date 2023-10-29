@@ -21,9 +21,9 @@ const CardItem = ({ news }) => {
   }
 
   return (
-    <article className="cardItem">
+    <article className="cardItem h-full flex flex-col">
       {news && (
-        <div className="card w-96 bg-base-100">
+        <div className="card w-96 bg-base-100 flex flex-col h-full">
           <figure>
             <img
               src={
@@ -43,7 +43,7 @@ const CardItem = ({ news }) => {
               </b>
             </p>
           </div>
-          <div className="card-body h-80 overflow-hidden">
+          <div className="card-body h-80 overflow-hidden flex-1">
             <h2 className="card-title">{news?.title}</h2>
             <p>{news?.description}</p>
           </div>
