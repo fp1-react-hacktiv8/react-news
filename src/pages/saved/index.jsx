@@ -1,8 +1,8 @@
 import TabMenu from "@components/TabMenu";
 import Table from "@components/Table";
 // import CardItem from "@components/card_item";
-import Footer from "@components/footer";
-import Navbar from "@components/navbar";
+import Footer from "@components/Footer";
+import Navbar from "@components/Navbar";
 import { useSelector } from "react-redux";
 
 const Saved = () => {

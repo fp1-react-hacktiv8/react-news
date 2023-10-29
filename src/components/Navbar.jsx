@@ -50,7 +50,7 @@ const Navbar = () => {
           <div className="form-control">
             <input
               type="text"
-              placeholder="Search news..."
+              placeholder="Search News"
               className="input input-bordered w-24 h-10 md:w-auto rounded-full border-primary"
               onChange={(e) => setSearch(e.target.value)}
               onKeyDown={(e) => {

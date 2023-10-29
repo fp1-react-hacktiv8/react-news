@@ -1,6 +1,6 @@
+import Footer from "@components/Footer";
 import MainContent from "@components/MainContent";
-import Footer from "@components/footer";
-import Navbar from "@components/navbar";
+import Navbar from "@components/Navbar";
 import endpoints from "@libs/api";
 
 const Indonesia = () => {

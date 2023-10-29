@@ -49,7 +49,6 @@ const CardItem = ({ news }) => {
           </div>
         </div>
       )}
-
       <footer className="align-bottom bottom-4">
         <hr />
         <div className="flex flex-row justify-between">
